@@ -1,245 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timestamp Microservice</title>
-    <link rel="stylesheet" href="public/style.css">
-    <style>
-      /* CSS Variables for the Beige/White Theme */
-:root {
---color-background: #f5f5f5;
---color-card-bg: #ffffff;
---color-text-dark: #333333;
---color-text-medium: #6b7280;
---color-accent-dark: #b54708;
---color-accent-light: #d97706;
---color-input-border: #d1d5db;
---color-result-bg: #fafafa;
---color-error: #b91c1c;
-}
 
-/* Base Styles */
-body {
-font-family: 'Inter', sans-serif;
-background-color: var(--color-background);
-color: var(--color-text-dark);
-min-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
-padding: 1rem;
-margin: 0;
-}
+<html>
+   <head>
+      <title>Timestamp Microservice | freeCodeCamp.org</title>
+      <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="style.css" rel="stylesheet" type="text/css">
+   </head>
 
-/* Container Card */
-.container {
-width: 100%;
-max-width: 42rem;
-background-color: var(--color-card-bg);
-box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-border-radius: 0.75rem;
-padding: 2rem;
-display: flex;
-flex-direction: column;
-gap: 2rem;
-border: 1px solid #e5e7eb;
-}
-
-/* Header */
-.header {
-text-align: center;
-display: flex;
-flex-direction: column;
-gap: 0.5rem;
-}
-
-.header-title {
-font-size: 2.25rem;
-font-weight: 800;
-color: var(--color-accent-dark);
-}
-
-.header-subtitle {
-color: var(--color-text-medium);
-}
-
-/* Input and Button Section */
-.input-section {
-display: flex;
-flex-direction: column;
-gap: 1rem;
-}
-
-.input-group {
-display: flex;
-flex-direction: column;
-gap: 1rem;
-}
-
-@media (min-width: 640px) {
-.input-group {
-flex-direction: row;
-}
-}
-
-.input-field {
-flex-grow: 1;
-padding: 0.75rem;
-border-radius: 0.5rem;
-border: 1px solid var(--color-input-border);
-background-color: var(--color-card-bg);
-color: var(--color-text-dark);
-transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.input-field::placeholder {
-color: var(--color-text-medium);
-}
-
-.input-field:focus {
-outline: none;
-border-color: var(--color-accent-light);
-box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.5);
-}
-
-.action-button {
-padding: 0.75rem 1.5rem;
-background-color: var(--color-accent-light);
-color: var(--color-card-bg);
-font-weight: 700;
-border-radius: 0.5rem;
-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
-transition: background-color 0.15s, transform 0.15s;
-cursor: pointer;
-}
-
-.action-button:hover {
-background-color: var(--color-accent-dark);
-transform: scale(1.05);
-}
-
-.action-button:active {
-transform: scale(0.95);
-}
-
-/* Example Links */
-.example-links-area {
-font-size: 0.875rem;
-color: var(--color-text-medium);
-padding-top: 0.5rem;
-}
-
-.example-list {
-list-style: none;
-padding: 0;
-margin-top: 0.25rem;
-}
-
-.example-list li {
-margin-bottom: 0.25rem;
-}
-
-.example-list a {
-text-decoration: underline;
-color: var(--color-text-medium);
-transition: color 0.15s;
-}
-
-.example-list a:hover {
-color: var(--color-accent-dark);
-}
-
-/* Result Area */
-.result-section {
-background-color: var(--color-result-bg);
-padding: 1.5rem;
-border-radius: 0.75rem;
-border: 1px solid var(--color-input-border);
-}
-
-.result-title {
-font-size: 1.25rem;
-font-weight: 700;
-margin-bottom: 0.75rem;
-color: var(--color-accent-dark);
-}
-
-.result-pre {
-white-space: pre-wrap;
-word-break: break-words;
-font-size: 0.875rem;
-color: var(--color-text-dark);
-background-color: var(--color-card-bg);
-padding: 1rem;
-border-radius: 0.5rem;
-border: 1px solid #e5e7eb;
-transition: color 0.3s;
-}
-
-.result-error {
-color: var(--color-error);
-}
-
-/* Footer */
-.footer {
-text-align: center;
-font-size: 0.875rem;
-color: #9ca3af;
-padding-top: 1rem;
-}
-    </style>
-</head>
-<body class="app-body">
-
+   <body>
+    <h1>Timestamp Microservice</h1>
+    <hr />
     <div class="container">
-        <header class="header">
-            <h1 class="header-title">Timestamp Microservice</h1>
-            <p class="header-subtitle">Enter a date string, a Unix timestamp (in milliseconds), or leave blank for the current time.</p>
-        </header>
+      <h2>Example Usage:</h2>
+      <ul>
+        <li><a href="api/2015-12-25">[project url]/api/2015-12-25</a></li>
+        <li><a href="api/1451001600000">[project url]/api/1451001600000</a></li>
+      </ul>
 
-        <section class="input-section">
-            <div class="input-group">
-                <input
-                    type="text"
-                    id="dateInput"
-                    placeholder="E.g., 2015-12-25 or 1451001600000"
-                    class="input-field"
-                >
-                <button
-                    onclick="getTimestamp()"
-                    class="action-button"
-                >
-                    Get Timestamp
-                </button>
-            </div>
-
-            <!-- Example Links -->
-            <div class="example-links-area">
-                <p style="font-weight: 600; margin-bottom: 0.25rem;">Try these examples:</p>
-                <ul class="example-list">
-                    <li><a href="#" onclick="setDateInput('2015-12-25'); return false;">Date String: 2015-12-25</a></li>
-                    <li><a href="#" onclick="setDateInput('1451001600000'); return false;">Unix Timestamp: 1451001600000</a></li>
-                    <li><a href="#" onclick="setDateInput(''); return false;">Empty (Current Time)</a></li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="result-section">
-            <h2 class="result-title">API Response (JSON)</h2>
-            <pre id="resultOutput" class="result-pre">
-{
-    "unix": "...",
-    "utc": "..."
-}</pre>
-        </section>
-
-        <footer class="footer">
-            <p>Functionality mimics the API endpoint logic for freeCodeCamp's Timestamp Microservice challenge. KGT.</p>
-        </footer>
+      <h2>Example Output:</h2>
+      <p>
+        <code>{"unix":1451001600000, "utc":"Fri, 25 Dec 2015 00:00:00 GMT"}</code>
+      </p>
     </div>
-
-    <!-- Linking external JavaScript as requested -->
-    <script src="script.js"></script>
-</body>
+    <div class="footer">
+      <p>
+        By <a href="https://www.freecodecamp.org/">freeCodeCamp.org</a>
+      </p>
+    </div>
+  </body>
 </html>
